@@ -39,8 +39,8 @@ This document defines the business requirements for a Data Quality (DQ) Framewor
 
 ## 5. Data Model
 
-### 5.1. Data Quality Rule Table
-| Column Name           | Data Type      | Constraints         | Description                                                                 |
+### 5.1. audit_dq_rule
+| Column Name           | Data Type     | Constraints         | Description                                                                 |
 |-----------------------|---------------|---------------------|-----------------------------------------------------------------------------|
 | dq_rule_name          | VARCHAR(255)  | UNIQUE, NOT NULL    | Name of the data quality rule                                               |
 | object_applied_to     | VARCHAR(255)  | NOT NULL            | Table or object to which the rule applies                                   |
@@ -57,10 +57,10 @@ This document defines the business requirements for a Data Quality (DQ) Framewor
 | updated_at            | DATETIME      | NOT NULL            | Timestamp when rule was last updated                                        |
 | last_updated_timestamp| DATETIME      | NOT NULL            | Last update timestamp                                                       |
 | job_run_id            | VARCHAR(255)  | NOT NULL            | Job run identifier                                                          |
-| job_run_name          | VARCHAR(255)  | NOT NULL            | Job run name                                                                |
+| job_name              | VARCHAR(255)  | NOT NULL            | Job name                                                                    |
 
-### 5.2. Data Quality Rule Failed Table
-| Column Name           | Data Type      | Constraints         | Description                                                                 |
+### 5.2. audit_dq_rule_failure
+| Column Name           | Data Type     | Constraints         | Description                                                                 |
 |-----------------------|---------------|---------------------|-----------------------------------------------------------------------------|
 | dq_rule_name          | VARCHAR(255)  | NOT NULL            | Name of the failed rule                                                     |
 | dq_rule_failure_count | INT           | NOT NULL            | Number of failures for this rule                                            |
@@ -72,10 +72,10 @@ This document defines the business requirements for a Data Quality (DQ) Framewor
 | updated_at            | DATETIME      | NOT NULL            | Timestamp when record was last updated                                      |
 | last_updated_timestamp| DATETIME      | NOT NULL            | Last update timestamp                                                       |
 | job_run_id            | VARCHAR(255)  | NOT NULL            | Job run identifier                                                          |
-| job_run_name          | VARCHAR(255)  | NOT NULL            | Job run name                                                                |
+| job_name              | VARCHAR(255)  | NOT NULL            | Job name                                                                    |
 
-### 5.3. Trace Table
-| Column Name           | Data Type      | Constraints         | Description                                                                 |
+### 5.3. audit_job_trace
+| Column Name           | Data Type     | Constraints         | Description                                                                 |
 |-----------------------|---------------|---------------------|-----------------------------------------------------------------------------|
 | dq_rule_name          | VARCHAR(255)  | NOT NULL            | Name of the rule being traced                                               |
 | source_object         | VARCHAR(255)  | NOT NULL            | Source object                                                               |
@@ -90,10 +90,10 @@ This document defines the business requirements for a Data Quality (DQ) Framewor
 | updated_at            | DATETIME      | NOT NULL            | Timestamp when record was last updated                                      |
 | last_updated_timestamp| DATETIME      | NOT NULL            | Last update timestamp                                                       |
 | job_run_id            | VARCHAR(255)  | NOT NULL            | Job run identifier                                                          |
-| job_run_name          | VARCHAR(255)  | NOT NULL            | Job run name                                                                |
+| job_name              | VARCHAR(255)  | NOT NULL            | Job name                                                                    |
 
-### 5.4. Data Quality Rule Failed Details Table
-| Column Name           | Data Type      | Constraints         | Description                                                                 |
+### 5.4. audit_dq_rule_failure_details
+| Column Name           | Data Type     | Constraints         | Description                                                                 |
 |-----------------------|---------------|---------------------|-----------------------------------------------------------------------------|
 | dq_rule_name          | VARCHAR(255)  | NOT NULL            | Name of the failed rule                                                     |
 | source_record         | JSON          | NOT NULL            | Source record in JSON format                                                |
@@ -103,10 +103,10 @@ This document defines the business requirements for a Data Quality (DQ) Framewor
 | updated_at            | DATETIME      | NOT NULL            | Timestamp when record was last updated                                      |
 | last_updated_timestamp| DATETIME      | NOT NULL            | Last update timestamp                                                       |
 | job_run_id            | VARCHAR(255)  | NOT NULL            | Job run identifier                                                          |
-| job_run_name          | VARCHAR(255)  | NOT NULL            | Job run name                                                                |
+| job_name              | VARCHAR(255)  | NOT NULL            | Job name                                                                    |
 
-### 5.5. Job Run History Table
-| Column Name           | Data Type      | Constraints         | Description                                                                 |
+### 5.5. audit_job_run_history
+| Column Name           | Data Type     | Constraints         | Description                                                                 |
 |-----------------------|---------------|---------------------|-----------------------------------------------------------------------------|
 | created_by            | VARCHAR(255)  | NOT NULL            | User who created the record                                                 |
 | created_at            | DATETIME      | NOT NULL            | Timestamp when record was created                                           |
@@ -114,7 +114,7 @@ This document defines the business requirements for a Data Quality (DQ) Framewor
 | updated_at            | DATETIME      | NOT NULL            | Timestamp when record was last updated                                      |
 | last_updated_timestamp| DATETIME      | NOT NULL            | Last update timestamp                                                       |
 | job_run_id            | VARCHAR(255)  | NOT NULL            | Job run identifier                                                          |
-| job_run_name          | VARCHAR(255)  | NOT NULL            | Job run name                                                                |
+| job_name              | VARCHAR(255)  | NOT NULL            | Job name                                                                    |
 | start_time            | DATETIME      | NOT NULL            | Job start time                                                              |
 | end_time              | DATETIME      | NOT NULL            | Job end time                                                                |
 | duration              | INT           | NOT NULL            | Duration in seconds or minutes                                              |
